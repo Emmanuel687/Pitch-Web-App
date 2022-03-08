@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/manu/Documents/Moringa Projects/Core-Projects/Pitch-Web-App/virtual"
+set -gx VIRTUAL_ENV "/home/shalin/Desktop/pitch-app/virtual"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

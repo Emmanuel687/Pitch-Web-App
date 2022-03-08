@@ -1,51 +1,72 @@
-from flask import render_template,request,redirect,url_for, abort
-from flask.signals import template_rendered
-from sqlalchemy.orm import load_only
-from app.main import main
-from .forms import UpdateProfile, PitchForm, ReviewForm
-from ..models import User, Pitch, Review
-from flask_login import login_required, current_user
-from .. import db, photos
-import datetime
+from flask_login import login_required,current_user
+from ..models import Pitches, User, Comments
+from . import main
+from .. import db,photos
+from .forms import PitchForm,CommentForm, UpdateProfile
 
-#views
+# blueprint views
+from flask import render_template,request,redirect,url_for,abort
+
+
+# main route
 @main.route('/')
 def index():
     '''
-    View root page function that returns the index page and its data
+    my index page
+    return
     '''
+    message= "Hello"
+    title= 'Pitch'
+    return render_template('index.html', message=message,title=title)
 
-    title = 'Home - Welcome to Exhibit Pitch'
-     # Getting reviews by category
-    customer_pitches = Pitch.get_pitches('customer')
-    employee_pitches = Pitch.get_pitches('employee')
-    investor_pitches = Pitch.get_pitches('investor')
+@main.route('/pitch/', methods = ['GET','POST'])
+@login_required
+def new_pitch():
 
-    return render_template('index.html', title = title, customer = customer_pitches, employee = employee_pitches, investor= investor_pitches)
+    form = PitchForm()
 
-@main.route('/home')
-def home():
+    if form.validate_on_submit():
+        category = form.category.data
+        pitch= form.pitch.data
+        title=form.title.data
+
+        # Updated pitchinstance
+        new_pitch = Pitches(title=title,category= category,pitch= pitch,user_id=current_user.id)
+
+        title='New Pitch'
+
+        new_pitch.save_pitch()
+
+        return redirect(url_for('main.index'))
+
+    return render_template('pitch.html',pitch_entry= form)
+
+    # main route categories
+@main.route('/categories/<cate>')
+def category(cate):
     '''
-    View root page function that returns the home page and its data
+    function to return the pitches by category
     '''
+    category = Pitches.get_pitches(cate)
+    # print(category)
+    title = f'{cate}'
+    return render_template('categories.html',title = title, category = category)
 
-    title = 'Home - Welcome to Exhibit Pitch'
-
-    return render_template('home.html', title = title)
-
+    # profile username
 @main.route('/user/<uname>')
 def profile(uname):
-    user = User.query.filter_by(username = uname).first()
+    user = User.query.filter_by(author = uname).first()
 
     if user is None:
         abort(404)
 
     return render_template("profile/profile.html", user = user)
 
+
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required
 def update_profile(uname):
-    user = User.query.filter_by(username = uname).first()
+    user = User.query.filter_by(author = uname).first()
     if user is None:
         abort(404)
 
@@ -57,15 +78,15 @@ def update_profile(uname):
         db.session.add(user)
         db.session.commit()
 
-        return redirect(url_for('.profile',uname=user.username))
+        return redirect(url_for('.profile',uname=user.author))
 
     return render_template('profile/update.html',form =form)
 
-
+# updating profile picture 
 @main.route('/user/<uname>/update/pic',methods= ['POST'])
 @login_required
 def update_pic(uname):
-    user = User.query.filter_by(username = uname).first()
+    user = User.query.filter_by(author = uname).first()
     if 'photo' in request.files:
         filename = photos.save(request.files['photo'])
         path = f'photos/{filename}'
@@ -73,86 +94,34 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
-@main.route('/pitch/new', methods = ['GET','POST'])
+# login to make comment
+@main.route('/comments/<id>')
 @login_required
-def new_pitch():
-    pitch_form = PitchForm()
-    if pitch_form.validate_on_submit():
-        title = pitch_form.title.data
-        pitch = pitch_form.text.data
-        category = pitch_form.category.data
+def comment(id):
+    '''
+    function to return the comments
+    '''
+    comm =Comments.get_comment(id)
+    print(comm)
+    title = 'comments'
+    return render_template('comments.html',comment = comm,title = title)
 
-        # Updated pitch instance
-        new_pitch = Pitch(p_title=title,p_body=pitch,category=category,user=current_user,upvote=0,downvote=0)
-
-        # Save pitch method
-        new_pitch.save_pitch()
-        return redirect(url_for('.index'))
-
-    title = 'New pitch'
-    return render_template('new_pitch.html',title = title,pitch_form=pitch_form )
-
-@main.route('/pitch/<int:id>', methods = ['GET','POST'])
+# make new comment
+@main.route('/new_comment/<int:pitches_id>', methods = ['GET', 'POST'])
 @login_required
-def pitch(id):
-    pitch = Pitch.get_pitch(id)
-    posted_date = pitch.posted_date.strftime('%b %d, %Y')
-    
-    if request.args.get("upvote"):
-        pitch.upvote = pitch.upvote + 1
+def new_comment(pitches_id):
+    pitches = Pitches.query.filter_by(id = pitches_id).first()
+    form = CommentForm()
 
-        db.session.add(pitch)
-        db.session.commit()
+    if form.validate_on_submit():
+        comment = form.comment.data
 
-        return redirect("/pitch/{p_id}".format(p_id=pitch.id))
-
-    elif request.args.get("downvote"):
-        pitch.downvote = pitch.downvote + 1
-
-        db.session.add(pitch)
-        db.session.commit()
-
-        return redirect("/pitch/{p_id}".format(p_id=pitch.id))
-
-    review_form = ReviewForm()
-    if review_form.validate_on_submit():
-        review = review_form.text.data
-
-        new_review = Review(review = review,user = current_user,p_id = pitch)
-
-        new_review.save_review()
+        new_comment = Comments(comment=comment,user_id=current_user.id, pitches_id=pitches_id)
 
 
-    reviews = Review.get_reviews(pitch)
-
-    return render_template("pitch.html", pitch = pitch, review_form = review_form, reviews = reviews, date = posted_date)
-
-@main.route('/investor')
-@login_required
-def investor():
-    pitches = Pitch.get_pitches('investor')
-    title= 'this investor template'
-    return render_template('investors_pitches.html',title=title, pitches = pitches)
-
-@main.route('/employee')
-@login_required
-def employee():
-    pitches = Pitch.get_pitches('employee')
-    title= 'Pitch to Employees'
-    return render_template('employees_pitches.html',title=title, pitches=pitches)
-
-@main.route('/customer')
-@login_required
-def customer():
-    pitches = Pitch.get_pitches('customer')
-    title= 'Pitch to Customers'
-    return render_template('customer_pitches.html',title=title, pitches=pitches)
+        new_comment.save_comment()
 
 
-@main.route('/user/<uname>/pitches')
-def user_pitches(uname):
-    user = User.query.filter_by(username=uname).first()
-    pitches = Pitch.query.filter_by(user_id = user.id).all()
-    pitches_count = Pitch.count_pitches(uname)
-
-    return render_template("profile/pitches.html", user=user,pitches=pitches,pitches_count=pitches_count)
+        return redirect(url_for('main.index'))
+    title='New Pitch'
+    return render_template('new_comment.html',title=title,comment_form = form,pitches_id=pitches_id)
