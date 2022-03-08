@@ -3,7 +3,7 @@ import os
 class Config:
 
     SECRET_KEY='SECRET_KEY'
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://shalin:Chepkoech03@localhost/pitchh'
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://brenda:andeso2018@localhost/pitch'
 
     #  image uploader
     UPLOADED_PHOTOS_DEST ='app/static/photos'
@@ -19,7 +19,7 @@ class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://shalin:Chepkoech03@localhost/pitchh_test'
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://brenda:andeso2018@localhost/pitch_test'
 
 
 class DevConfig(Config):
@@ -29,7 +29,7 @@ class DevConfig(Config):
         Config: The parent configuration class with General configuration settings
     '''
     # connecting to database
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://shalin:Chepkoech03@localhost/pitchh'
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://emmanuel:koech@localhost/pitch'
 
     DEBUG = True
 
@@ -40,7 +40,7 @@ class DevConfig(Config):
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     SUBJECT_PREFIX = 'Pitch'
-    SENDER_EMAIL = 'shalin.rono@student.moringaschool.com'
+    SENDER_EMAIL = 'emmanuel.koech@student.moringaschool.com'
 
   # editor
 class Config:
@@ -60,5 +60,3 @@ config_options = {
 'production':ProdConfig,
 'test':TestConfig
 }
-
-
