@@ -3,124 +3,75 @@
 <!-- styles block -->
 {% block styles%} {{ super() }}
 <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}"> -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="static/css/style.css">
 
 
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous" />
-<style>
-    body {
-        background-color: darkgray;
-    }
-    
-    h1 :hover {
-        box-shadow: 0 0 10px rgba(45, 3, 85, 0.6), 0 0 20px rgba(45, 3, 85, 0.6), 0 0 40px rgba(45, 3, 85, 0.6);
-    }
-    /* .height {
-        height: 250px;
-    }
-     */
-    
-    .col {
-        background-color: dimgray;
-        width: 500px;
-        border-radius: 15px;
-        color: indigo;
-    }
-    
-    .card-text {
-        font-size: large;
-        color: black;
-    }
-    
-    .card-header {
-        font-size: xx-large;
-    }
-    
-    .card-groups {
-        background-color: dimgray;
-        width: 500px;
-        border-radius: 15px;
-    }
-    
-    .card-groups:hover {
-        box-shadow: 0 0 10px rgba(45, 3, 85, 0.6), 0 0 20px rgba(45, 3, 85, 0.6), 0 0 40px rgba(45, 3, 85, 0.6);
-    }
-    
-    .col:hover {
-        box-shadow: 0 0 10px rgba(45, 3, 85, 0.6), 0 0 20px rgba(45, 3, 85, 0.6), 0 0 40px rgba(45, 3, 85, 0.6);
-    }
-</style>{% endblock %} {% block content %}
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+{% endblock %}
+{% block content %}
 
-<body style="color: rgb(61, 10, 95); text-align: center;">
-    <div class="container">
-        <h1>PITCH APP</h1>
-        <br>
-        <div class="row align-items-center">
-            <div class="col-md-12">
-                <div class="d-flex justify-content-center">
-                    <div class="card-groups">
-                        <div class="card border-info mb-5  height" style="max-width: 50rem;">
-                            <div class="card-header">Business Pitch</div>
-                            <div class="card-body text-info">
-                                <p class="card-text">"...To be successful, you have to have your heart in your business, and your business in your heart..."</p>
-                                <button type="button" class="btn btn-success"><a href="../pitch/">Add Pitch</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button type="button" class="btn btn-success"><a href="/categories/Business">View Pitch</a></button>
-                            </div>
-                            <br>
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-
-                    <!-- random pitches -->
-                    <div class="col">
-                        <div class="card border-info mb-5" style="max-width: 50rem;">
-                            <div class="card-header">Health Pitches</div>
-                            <div class="card-body text-info">
-                                <p class="card-text">"...A fit body , a calm mind, a house full of love. These things cannot be bought, they are earned..."</p>
-                                <button type="button" class="btn btn-success"><a href="../pitch/">Add Pitch</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button type="button" class="btn btn-success"><a href="/categories/Health">View Pitch</a></button>
-                            </div>
-                            <br>
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                    <!-- random pitches -->
-                    <div class="col">
-                        <div class="card border-info mb-7" style="max-width: 50rem;">
-                            <div class="card-header">Dance Pitches</div>
-                            <div class="card-body text-info">
-                                <p class="card-text">"...Hand in hand on the edge of sand, they danced by the light of moon..."</p>
-                                <button type="button" class="btn btn-success"><a href="../pitch/">Add Pitch</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button type="button" class="btn btn-success"><a href="/categories/Dance">View Pitch</a></button>
-                            </div>
-                            <br>
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="col">
-                        <div class="card border-info mb-7" style="max-width: 40rem;">
-                            <div class="card-header">Educational Pitches</div>
-                            <div class="card-body text-info">
-                                <p class="card-text">"...Teachers open the door, but you must enter..."</p>
-                                <button type="button" class="btn btn-success"><a href="../pitch/">Add Pitch</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button type="button" class="btn btn-success"><a href="/categories/Educational">View Pitch</a></button>
-                            </div>
-                            <br>
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                </div>
-            </div>
+<body>
+  <br>
+  <div class="container">
+  <div class="row align-items-center">
+      <div class="col-md-12">
+  <div class="d-flex justify-content-center">
+    <div class="card-groups">
+      <div class="card border-info mb-3" style="max-width: 35rem;">
+        <div class="card-header">Interview..</div>
+        <div class="card-body text-info">
+          <h5 class="card-title">Interview Pitch</h5>
+          <p class="card-text">Change people's mindset and thinking concerning interviews and give them ideas on how to conduct themselves better.</p>
+          <button type="button" class="btn btn-outline-primary"><a href="../pitch/">Add Pitch</a></button>
+          <button type="button" class="btn btn-outline-primary"><a href="/categories/Interview">View Pitch</a></button>
         </div>
+      </div>
+      </div>
+
+      <!-- random pitches -->
+      <div class="col-md-6">
+      <div class="card border-info mb-3" style="max-width: 35rem;">
+        <div class="card-header">Just-Randomly</div>
+        <div class="card-body text-info">
+          <h5 class="card-title">Random Pitches</h5>
+          <p class="card-text">Take this takeaway to display any random pitch inyour mind.Just being un-categorical you know...</p>
+          <button type="button" class="btn btn-outline-secondary"><a href="../pitch/">Add Pitch</a></button>
+          <button type="button" class="btn btn-outline-secondary"><a href="/categories/Random">View Pitch</a></button>
+        </div>
+      </div>
+      </div>
+      <!-- random pitches -->
+      <div class="col">
+      <div class="card border-info mb-3" style="max-width: 35rem;">
+        <div class="card-header">Take a breather :)</div>
+        <div class="card-body text-info">
+          <h5 class="card-title">Funny Pitches</h5>
+          <p class="card-text">Post something to uplift our spirits :)...</p>
+          <button type="button" class="btn btn-outline-secondary"><a href="../pitch/">Add Pitch</a></button>
+          <button type="button" class="btn btn-outline-secondary"><a href="/categories/Random">View Pitch</a></button>
+        </div>
+      </div>
+      </div>
+      <!-- pitches about promotion -->
+      <div class="col">
+      <div class="card border-info mb-3" style="max-width: 35rem;">
+        <div class="card-header">Promotion</div>
+        <div class="card-body text-info">
+          <h5 class="card-title">Promotion Pitches</h5>
+          <p class="card-text">Take this opportunity to promote any product you wish!!</p>
+          <button type="button" class="btn btn-outline-primary"><a href="../pitch/">Add Pitch</a></button>
+          <button type="button" class="btn btn-outline-primary"><a href="/categories/Promotion">View Pitch</a></button>
+        </div>
+      </div>
+      </div>
     </div>
+  </div>
+  </div>
+  </div>
 
-    {% endblock%}
-
-</body>
+  {% endblock%}
+  
 </body>

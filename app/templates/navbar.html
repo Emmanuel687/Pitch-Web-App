@@ -1,30 +1,42 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(13, 14, 14);">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000d0e;">
+    <a class="navbar-brand" href="/">Welcome to Pitch-App</a>
+    
+    <div class="collapse navbar-collapse display-6" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li> <br><br>
+        <li class="nav-item">
+          <a class="nav-link" href="/categories/Interview">Interview</a>
+        </li> <br><br>
+        <li class="nav-item">
+          <a class="nav-link" href="/categories/Promotion">Promotion</a>
+        </li> <br><br>
+        <li class="nav-item">
+          <a class="nav-link" href="/categories/random">Random</a>
+        </li> <br><br>
+        <li class="nav-item">
+            <a class="nav-link" href="/categories/funny">funny</a>
+        </li> <br><br>
+        <li class="nav-item">
+            <a class="nav-link" href="/categories/funny">product</a>
+        </li> <br><br>
+      </ul>
 
-
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
-        <div class="navbar-nav">
-            <strong><a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a></strong>&nbsp;&nbsp;&nbsp;
-            <a class="nav-link" href="/categories/Business">Business</a>&nbsp;&nbsp;&nbsp;
-            <a class="nav-link" href="/categories/Health">Health</a>&nbsp;&nbsp;&nbsp;
-            <a class="nav-link" href="/categories/Dance">Dance</a>&nbsp;&nbsp;&nbsp;
-            <a class="nav-link" href="/categories/Educational">Educational</a>&nbsp;&nbsp;&nbsp;
-
-        </div>
-
-        <!-- user section -->
-        <ul class="nav navbar-nav navbar-right">
-            {% if current_user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link" href="{{url_for('main.profile',uname=current_user.author)}}">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{url_for('auth.logout')}}">Log out</a>
-            </li>
-            {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="{{url_for('auth.login')}}">Sign in</a>
-            </li>
-            {%endif%}
-        </ul>
+      <!-- user section -->
+      <ul class="nav navbar-nav ms-auto">
+        {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('main.profile',uname=current_user.author)}}">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('auth.logout')}}">Log out</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('auth.login')}}">Sign in</a>
+        </li>
+        {%endif%}
+      </ul>
     </div>
-</nav>
+  </nav>

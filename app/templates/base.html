@@ -1,21 +1,24 @@
-{% extends 'bootstrap/base.html'%} {% block navbar %} {% include 'navbar.html' %} {% endblock %}
+{% extends 'bootstrap/base.html'%}
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+ <head>
 
-<head>
+   <meta charset="utf-8">
+   {% if title %}
+   <title>{{ title }}</title>
+   {% else %}
+   <title>Choose </title>
+   {% endif %}
+ </head>
+ <body>
 
-    <meta charset="utf-8"> {% if title %}
-    <title>{{ title }}</title>
-    {% else %}
-    <title>Choose </title>
-    {% endif %}
-</head>
+   {% block content %}
 
-<body>
+   {% endblock %}
 
-    {% block content %} {% endblock %}
-
-</body>
-
+ </body>
 </html>
