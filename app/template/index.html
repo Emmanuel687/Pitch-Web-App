@@ -1,0 +1,68 @@
+{%extends "base.html"%}
+{% import 'macros.html' as macro%}
+
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <ul name="categories" id="categories">
+      <li class="categs" id="alle">All</li>
+      <li class="categs" id="ent">Entertainment</li>
+      <li class="categs" id="cuisine">Food</li>
+      <li class="categs" id="innov">Innovative/Miscellaneous</li>
+     
+    </ul> 
+  </div>
+  <div class="contents">
+    <div class="jumbotron presentation" id="all"><br>
+        <h2>ALL</h2>
+        {{macro.display_pitches(pitches)}} </div>
+    <div class="jumbotron presentation" id="food"><br>
+      <h2>FOOD</h2>
+        {{macro.display_pitches(food)}} </div>
+    <div class="jumbotron presentation" id="entertainment"><br>
+        <h2>ENTERTAINMENT</h2>
+        {{macro.display_pitches(entertainment)}} </div>
+    <div class="jumbotron presentation" id="innovative"><br>
+      <h2>INNOVATIVE</h2>
+        {{macro.display_pitches(innovative)}} </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+  $('#alle').on('click', function(){
+    $('#all').show(500);
+    $('#entertainment').hide();
+    $('#innovative').hide();
+    $('#food').hide();
+  });
+  $('#ent').on('click', function(){
+    $('#entertainment').toggle(500);
+    $('#all').hide();
+    $('#innovative').hide();
+    $('#food').hide();
+  });
+  $('#cuisine').on('click', function(){
+    $('#food').toggle(500);
+    $('#all').hide(500);
+    $('#innovative').hide();
+    $('#entertainment').hide();
+  });
+  $('#innov').on('click', function(){
+    $('#innovative').toggle(500);
+    $('#all').hide(500);
+    $('#entertainment').hide();
+    $('#food').hide();
+  });
+
+});
+
+console.log('Hi')
+
+</script>
+{% endblock %}
