@@ -1,26 +1,70 @@
-# Project name
-Pitches
-## Project Description
-A flask web application that allows users to vote on pitches they like and leave a comment
-## Author
-Emmanuel Koech
-## Technologies used
-Python3.8
-Flask
-## Project setup instruction.
-Have a browser(Google Chrome)
-Have visual Studio Code
-visit your desired news websites using the provided links
-## Link
-https://github.com/Emmanuel687/Pitch-Web-App.git
-## Support and contact details
-In case of any issues or alert,feel free to contact me via; 
-E-mail: koechemmanuel2002@gmail.com 
-Phone: 0713598794
-## Know bugs
-There is none.
-### License
-*{See below for more details on licensing.}*
-https://choosealicense.com/licenses/mit/#
-This is under the [MIT](LICENSE) license
-Copyright (c) {2022} **{Emmanuel Koech}**
+Award
+#### Author: [Rubyroy12](https://github.com/Rubyroy12)
+## Description
+This is an application that allows user to use one minute to make a pitch and allow other users to vote ad give feedback on the pitch created.
+As a user of the web application you will be able to:
+1. user authentication user registration and login.
+2. User creating a pitch
+3. Ability to comment to the created pitch
+
+
+## Setup and installations
+* Clone Project to your machine
+* Activate a virtual environment on terminal: `source venv/bin/activate`
+* Install all the requirements found in requirements file.
+* On your terminal run `python3.8 manage.py server`
+* Access the live site using the local host provided
+  
+## Specifications
+* user Authentication
+* crating a pitch
+* 
+*  
+### Prerequisites
+* python3.8
+* virtual environment
+* pip
+#### Clone the Repo and rename it to suit your needs.
+bash
+git clone https://github.com/Rubyroy12/1minute-pitch.git
+
+#### Initialize git and add the remote repository
+bash
+git init
+
+bash
+git remote add origin https://github.com/Rubyroy12/1minute-pitch.git
+
+#### Create and activate the virtual environment
+bash
+python3.8-venv venv
+
+bash
+source venv/bin/activate
+
+#### Install dependancies
+Install dependancies that will create an environment for the app to run
+`pip install -r requirements.txt`
+#### Make and run migrations
+bash
+python3.8 manage.py check
+python manage.py makemigrations 
+python3.8 manage.py sqlmigrate 
+python3.8 manage.py migrate
+
+#### Run the app
+bash
+python3.8 manage.py runserver
+
+Open [localhost:5000](http://127.0.0.1:5000)
+## Testing the Application
+`python3.8 manager.py test`
+## Built With
+* [Python3.8](https://docs.python.org/3/)
+* Flask
+* Boostrap
+* HTML
+* CSS
+
+### Licence
+This project is under the  [MIT](LICENSE.md) licence
