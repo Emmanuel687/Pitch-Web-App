@@ -30,6 +30,5 @@ https://github.com/Emmanuel687/Pitch-Web-App.git
 
 python3.8 manage.py run server
 
-Open [localhost:5000](http://127.0.0.1:5000)
 ### Licence
 This project is under the  [MIT](LICENSE.md) licence
