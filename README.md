@@ -13,7 +13,7 @@ This is a flask application that allows users to create and post their pitches. 
 * Run chmod a+x start.sh
 * Run ./start.sh
 * Follow navigation directions provided.
-
+xx
 
 ## Development and modifications
 * To make advancements/modifications, follow these steps:
