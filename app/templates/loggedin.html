@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block styles %}
+    {{ super() }}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/login.css')}}" type="text/css">
+
+    {% endblock %}
+</head>
+<body>
+            <!-- Navbar block  --> 
+        {% block navbar %}
+        {% include 'navbar.html' %}
+        {% endblock %}  
+
+        {% block content %}
+        <div class="container text-center">
+             <img src="{{ url_for('static', filename='images/cover.jpg') }}" alt=""> 
+            <div class="text-content">
+                <h1 style="color: white;">The great danger for most of us lies not in setting our aim too high and falling short; <br>but in setting our aim too low, and achieving our mark.</h1>
+                
+                <h2 style="color: rgb(202,77,31);">Michelangelo</h2>
+                <br>
+            
+              
+            </div>     
+        </div>
+   
+
+    {% endblock %}
+</body>
+</html>

@@ -1,33 +1,29 @@
-<div class="navbar navbar-inverse" role="navigation">
-  <div class="container-fluid">
-      <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">One minute pitch</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/"> Pitching </a>
-      </div>
-      <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="/profile">Profile</a></li>
+<div class="navbar" role="navigation" style="background-color:rgba(0, 0, 0, 0.404) ; border-radius: 0; align-items: center;
+margin: 0 !important; min-height: 10vh;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+                >
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
 
-              <ul class="nav navbar-nav navbar-right">
-                {% if current_user.is_authenticated %}
-                <li style="color:white;padding:15px;">{{current_user.username}}</li>
-                <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
-                {% else %}
-                <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
-                {%endif%}
-              </ul>
-
-          </ul>
-
-         
-      </div>
-      
-
-  </div>
+                
+            </div>
+            <a class="navbar-brand"  href="/" style="font-size:25px; color:rgb(31, 30, 30); font-weight: bold; font-family: Arial, Helvetica, sans-serif; "><span style="color:green ;">Pitch-World</span></a>
+            <div class="navbar-right">
+                
+            </div>
+            <div class="navbar-collapse collapse" style="float: right;">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{url_for('main.loggedin')}}" style=" color:black;text-decoration: none; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">Home Page</a></li>
+                    <li><a href="{{url_for('main.categories')}}"style=" color:black;text-decoration: none; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">View Pitches</a></li>
+                    <li><a href="/pitches/new" style="color: black; color: black;text-decoration: none; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">Add your Pitch</a></li>
+                    <li ><a href="{{url_for('main.profile',uname=current_user.username)}}" style=" color: black;text-decoration: none; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;"> {{current_user.username}} Profile</a></li>
+                    <li><a href="{{url_for('auth.logout')}}" style=" color: black;text-decoration: none; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
