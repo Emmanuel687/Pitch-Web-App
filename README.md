@@ -1,5 +1,5 @@
 # PITCH-APP
-## Created by : Ephraim Murimi
+## Created by : Emmanuel Koech
 This is a flask application that allows users to create and post their pitches. Users can also comment,upvote or downvote on pitches .
 ## Setup Requrements
 * Github
@@ -35,4 +35,4 @@ This project was built using Pythonv3.8
 
 
 ## License
-Copyright &copy; 2021. [MIT] (https://choosealicense.com/licenses/mit/)
+Copyright &copy; 2022. [MIT] (https://choosealicense.com/licenses/mit/)
