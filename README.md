@@ -1,34 +1,38 @@
-### Project Name
-Pitch Web-App
-#### Author
-Emmanuel Koech
-## Description
-This is an application that allows user to use one minute to make a pitch and allow other users to vote ad give feedback on the pitch create.
+# PITCH-APP
+## Created by : Ephraim Murimi
+This is a flask application that allows users to create and post their pitches. Users can also comment,upvote or downvote on pitches .
+## Setup Requrements
+* Github
+* Flask
+* Python
+* Web browser
 
-## Prequistes to run project
-Have google Chrome.
-Have Vscode.
-
-## Setup and installations
-* Clone Project to your machine
-* Activate a virtual environment on terminal: `source venv/bin/activate`
-* Install all the requirements found in requirements file.`pip install -r requirements.txt`
-* On your terminal run `python3.8 manage.py server`
-* Access the live site using the local host provided
-
-## Support and contact details
-In case of any issues or alert,feel free to contact me via; E-mail: koechemmanuel2002@gmail.com Phone: 0713598794
-
-## Know Bugs.
-There is none.
-
-## Link
-https://github.com/Emmanuel687/Pitch-Web-App.git
+## Instructions
+* Clone the repo to your computer.
+* Open your terminal and navigate to the project directory.
+* Run chmod a+x start.sh
+* Run ./start.sh
+* Follow navigation directions provided.
 
 
-#### Run the app
+## Development and modifications
+* To make advancements/modifications, follow these steps:
 
-python3.8 manage.py run server
+* Fork the repository
+* Create a new branch (git checkout -b improve-feature)
+* Make the appropriate changes in the files
+* Add changes made
+* Commit your changes.
+* Push to the branch 
 
-### Licence
-This project is under the  [MIT](LICENSE.md) licence
+## Technologies Used
+* Pythonv3.8
+* Flask
+* Bootstrap
+* HTML
+* CSS
+This project was built using Pythonv3.8
+
+
+## License
+Copyright &copy; 2021. [MIT] (https://choosealicense.com/licenses/mit/)
