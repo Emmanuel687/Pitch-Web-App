@@ -1,82 +1,24 @@
-{% extends 'base.html'%} {% import "bootstrap/wtf.html" as wtf %} {% block styles%} {{ super() }}
-<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+{% extends 'bootstrap/base.html' %}
+{% import 'macros.html' as macro %}
 
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous" />
-<style>
-    body {
-        background-color: darkgray;
-    }
-    
-    .card {
-        background-color: rgb(1, 11, 54);
-        color: ghostwhite;
-        margin-left: 5px;
-        text-align: left;
-        border-radius: 10px;
-    }
-    
-    .button {
-        padding-right: 5px;
-        margin-left: 5px;
-        text-align: center;
-    }
-</style>{% endblock %}
+{% block navbar %}
+        {% include 'navbar.html' %}
+{% endblock %}  
+<head>
+    {% block styles%}
+    {{ super() }}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/profile.css')}}">
 
-<br>
-<br>
-<br>
-<br>
+    {% endblock %}
 
-<body>
     {% block content %}
-    <br>
-    <br>
-    <div class="container">
-        <div class='card' style="width: 50rem;">
-            &nbsp;&nbsp;&nbsp;
-            <div class='card-body'>
-                <h1 class=" card title ">Welcome to Pitch App</h1>
-                &nbsp;&nbsp;&nbsp;
-                <h3 class="card text ">You can create your own Pitch in any of our fields by clicking the link button below</h3>
-                <button type="button " class="btn btn-success "><a href="../pitch/ ">Add Pitch</a></button><br>
-            </div><br>
-        </div>
-        <br>
-        <br>
-        <br>
-        <div class="card-columns ">
-            {% for category in category[::-1] %}
+    {{macro.display(twitter)}}
 
-            <div class="card bg-transparent border-success ">
-                <div class="card-header bg-transparent border-success ">
-                    {{category.title}}
-                </div>
-                <div class="card-body text ">
-                    <blockquote class="blockquote mb-0 ">
-                        <p>{{category.pitch}}</p><br>
-                        <footer class="blockquote-footer bg-transparent border-success ">{{category.author}}
-                            <br><cite title="Source Title ">Publish date: {{category.date.strftime('%Y-%m-%d')}}</cite>
-                        </footer>
-                    </blockquote>
-                </div>
-                <div class="card-footer bg-transparent border-success ">
-                    <button type="button " class="btn btn-outline-success btn-sm "><a
-              href="/new_comment/{{category.id}} ">Comment</a></button> <button type="button " class="btn btn-outline-success btn-sm "><a href="/comments/{{category.id}} ">View comments</a></button>
-                </div>
+    {% endblock %}
 
-                <p id="UpvoteCount "></p>
-
-                <!-- upvote and downvote -->
-                <div class="card-footer bg-transparent border-success ">
-                    <button type="button " id="like " class="btn btn-info btn-sm ">
-
-            <a class="text-decoration-none text-light " href=" ">Upvote <i class="fas fa-thumbs-up "></i></a></button>
-                    <button type="button " class="btn btn-danger btn-sm "><a class="text-decoration-none text-light " href=" ">Downvote
-              <i class="fas fa-thumbs-down "></i></a>
-          </button>
-                </div>
-            </div><br><br> {% endfor %}
-
-        </div>
-        {% endblock %}
-</body>
+           
+   
+</head>
+  
+    
