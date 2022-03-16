@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/home/manu/Documents/Moringa Projects/Core-Projects/Flask/Pitch-Web-App/virtual/bin/python" "$0" "$@"
-' '''
+#!/home/brenda/Documents/pitch/virtual/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

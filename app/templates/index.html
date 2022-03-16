@@ -1,34 +1,127 @@
-{% extends 'base.html' %}
+{% extends 'base.html'%}
+
+<!-- styles block -->
+{% block styles%} {{ super() }}
+<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}"> -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="static/css/style.css">
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% block styles %}
-    {{ super() }}
-    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}" type="text/css">
-
-    {% endblock %}
-</head>
-<body>
-    {% block content %}
-    <div class="container text-center">
-         <img src="{{ url_for('static', filename='images/cover4.jpg') }}" alt=""> 
-        <div class="text-content">
-            <h1 style="color: whitesmoke; font-size: 50px; font-weight: bold;">A goal is not always meant to be reached; it often serves simply as something to aim at.</h1>
-            <br>
-            
-            <a href="{{url_for('auth.register')}}" style="color: thistle;">  <button type="button" style="width: 110px; height:40px; font-size:20px; color: rgba(240, 239, 239, 0.699); background-color: rgba(0, 0, 0, 0.466); margin-right: 20px; border-radius: 10px; font-weight: bolder; font-family: Arial, Helvetica, sans-serif;"  >Sign up</button></a>
-            <a href="{{url_for('auth.login')}}" style="color: thistle;">  <button type="button" style="width: 110px; height:40px; font-size:20px; color: rgba(221, 215, 215, 0.849); background-color: rgba(0, 0, 0, 0.466); border-radius: 10px; font-weight: bolder; font-family: Arial, Helvetica, sans-serif;"  > Sign in</button></a>
-            
-        </div>
-
-        
-    </div>
-   
-
-    {% endblock %}
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous" />
+<style>
+    body {
+        background-color: whitesmoke;
+    }
     
+    h1 :hover {
+        box-shadow: black;
+    }
+    
+    
+    .col {
+        background-color: dimgray;
+        width: 500px;
+        border-radius: 15px;
+        color: black;
+    }
+    
+    .card-text {
+        font-size: large;
+        color: black;
+    }
+    
+    .card-header {
+        font-size: xx-large;
+    }
+    
+    .card-groups {
+        background-color: dimgray;
+        width: 500px;
+        border-radius: 15px;
+    }
+    
+    .card-groups:hover {
+        box-shadow: 0 0 10px rgba(45, 3, 85, 0.6), 0 0 20px rgba(45, 3, 85, 0.6), 0 0 40px rgba(45, 3, 85, 0.6);
+    }
+    
+    .col:hover {
+        box-shadow: 0 0 10px rgba(45, 3, 85, 0.6), 0 0 20px rgba(45, 3, 85, 0.6), 0 0 40px rgba(45, 3, 85, 0.6);
+    }
+</style>{% endblock %} {% block content %}
+
+<body style="color: rgb(61, 10, 95); text-align: center;">
+    <div class="container">
+        <h1>PITCH APP</h1>
+        <br>
+        <div style="text-align: right;color: blanchedalmond;">
+            <a href="https://www.wow4u.com/wisdom-quotes/"><h1>View more pitches </h1></a>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="d-flex justify-content-center">
+                    <div class="card-groups">
+                        <div class="card border-info mb-5  height" style="max-width: 50rem;">
+                            <div class="card-header">Business Pitch</div>
+                            <div class="card-body text-info">
+                                <p class="card-text">"...To be successful, you have to have your heart in your business, and your business in your heart..."</p>
+                                <button type="button" class="btn btn-success"><a href="../pitch/">Add Pitch</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-success"><a href="/categories/Business">View Pitch</a></button>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                 
+                    <!-- random pitches -->
+                    <div class="col">
+                        <div class="card border-info mb-5" style="max-width: 50rem;">
+                            <div class="card-header">Health Pitches</div>
+                            <div class="card-body text-info">
+                                <p class="card-text">"...A fit body , a calm mind, a house full of love. These things cannot be bought, they are earned..."</p>
+                                <button type="button" class="btn btn-success"><a href="../pitch/">Add Pitch</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-success"><a href="/categories/Health">View Pitch</a></button>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <!-- random pitches -->
+                    <div class="col">
+                        <div class="card border-info mb-7" style="max-width: 50rem;">
+                            <div class="card-header">Dance Pitches</div>
+                            <div class="card-body text-info">
+                                <p class="card-text">"...Hand in hand on the edge of sand, they danced by the light of moon..."</p>
+                                <button type="button" class="btn btn-success"><a href="../pitch/">Add Pitch</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-success"><a href="/categories/Dance">View Pitch</a></button>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col">
+                        <div class="card border-info mb-7" style="max-width: 40rem;">
+                            <div class="card-header">Educational Pitches</div>
+                            <div class="card-body text-info">
+                                <p class="card-text">"...Teachers open the door, but you must enter..."</p>
+                                <button type="button" class="btn btn-success"><a href="../pitch/">Add Pitch</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-success"><a href="/categories/Educational">View Pitch</a></button>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    {% endblock%}
+
 </body>
-</html>
+</body>
